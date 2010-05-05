@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="code-illuminated/docs.css" />
+  <title>Bespin Documentation</title>
+</head>
+<body>
+<div id="content">
+<div id="overview" class="documentation" style="display: none;">
+  <h1>Bespin</h1>
+  <p><b>Overview</b></p>
+  We are documenting the Bespin code as <a href="http://www.toolness.com/wp/?p=441">beautifully</a> as we can. For the front end JavaScript and Web code we are using the <a href="http://code.google.com/p/code-illuminated/">code illuminated tool</a> created by Atul Varma.</p>
+  <p>Here is what we've got for documentation so far.</p>
+  <h3>Bespin Front End Code</h3>
+
+  <b>Core Files</b>
+  <ul>
+    <li><a href="#code/bespin.js">Bespin Core</a></li>
+    <li><a href="#code/bootstrap.js">Editor Bootstrap Code</a></li>
+    <li><a href="#code/events.js">Core Editor Events and <code>Bespin.Events</code> Helper</a></li>
+  </ul>
+
+  <b>Client Code</b>
+  <ul>
+    <li><a href="#code/client/filesystem.js">FileSystem</a>: Remote File System</li>
+    <li><a href="#code/client/server.js">Server</a>: Implementation of the Bespin Server API</li>
+    <li><a href="#code/client/session.js">Session Module</a>: EditSession and SyncHelper</li>
+    <li><a href="#code/client/settings.js">Settings Module</a>: Settings core, and various stores</li>
+  </ul>
+
+  <b>Command Line</b>
+  <ul>
+    <li><a href="#code/commandline/commandline.js">CommandLine: The core command line module</a></li>
+    <li><a href="#code/commandline/commands.js">Commands</a>: The store that holds reused commands</li>
+    <li><a href="#code/commandline/dashboardcommands.js">Dashboard Commands</a></li>
+    <li><a href="#code/commandline/editorcommands.js">Editor Commands</a></li>
+  </ul>
+
+  <b>Editor</b>
+  <ul>
+    <li><a href="#code/editor/actions.js">Editor Actions</a>: what the editor can do</li>
+    <li><a href="#code/editor/editor.js">Editor</a>: The meat. The Core. paint()</li>
+    <li><a href="#code/editor/model.js">Model</a>: the document model the editor uses</li>
+    <li><a href="#code/editor/syntaxhighlighter.js">Syntax Highlighter</a>: shim over to whatever highlighter is used</li>
+    <li><a href="#code/editor/themes.js">Themes</a>: Current theming</li>
+    <li><a href="#code/editor/toolbar.js">Toolbar</a>: link external toolbar to the editor itself</li>
+    <li><a href="#code/editor/undo.js">Undo</a>: Manage the undo / redo queue</li>
+  </ul>
+
+  <b>Syntax Highlighting</b>
+  <ul>
+      <li><a href="#code/syntax/syntax.js">Syntax Highlighter</a>: The core driver (SyntaxModel) and engine resolver (EngineResolver)</li>
+      <li><a href="#code/syntax/javascript.js">JavaScript Syntax Engine</a></li>
+      <li><a href="#code/syntax/css.js">CSS Syntax Engine</a></li>
+      <li><a href="#code/syntax/html.js">HTML Syntax Engine</a></li>
+  </ul>
+  
+  <b>Utilities</b>
+  <ul>
+    <li><a href="#code/util/clipboard.js">Clipboard</a>: Handle the clipboard to copy and paste</li>
+    <li><a href="#code/util/fixcanvas.js">Canvas</a>: shim it up, have the standard work all over</li>
+    <li><a href="#code/util/keys.js">Key</a>: Key codes and simple handling</li>
+    <li><a href="#code/util/navigate.js">Navigate</a>: Shoot people around the Bespin URLs (a.k.a. location.href wrapper)</li>
+    <li><a href="#code/util/path.js">Path</a>: combine paths, get directories, and escape away</li>
+    <li><a href="#code/util/textselection.js">TextSelection</a>: The ability to call $(elements).enableTextSelection to disable it</li>
+    <li><a href="#code/util/tokenobject.js">TokenObject</a>: split up a string into pieces</li>
+    <li><a href="#code/util/urlbar.js">URLBar</a> will watch the hash location and fire an event when it changes</li>
+  </ul>
+
+</div>
+</div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+<script src="code-illuminated/wikicreole.js"></script>
+<script src="code-illuminated/docs.js"></script>
+</html>
