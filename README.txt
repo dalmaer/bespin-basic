@@ -1,35 +1,10 @@
-Welcome to Bespin!
-------------------
+A few years ago, a small team of folks working in Mozilla Labs creating Bespin, a web-based code editor. Two of the guys responsible, Ben and Dion, left for Palm sometime later.
 
-Bespin is a Mozilla Labs experiment on how to build an extensible Web code 
-editor using HTML 5 technology.
+The Bespin team at Mozilla is going down an exciting path, building out the future of Bespin on technologies like SproutCore and pluggable JS modules and all kinds of great stuff.
 
-Project home page: http://labs.mozilla.com/projects/bespin/
-Live system: https://bespin.mozilla.com/
+Bespin-Basic is an experiment in going the opposite direction, taking Bespin back its roots as a small, light-weight project with minimal dependencies and a focus on being a fast-evolving, great code editor.
 
+Maybe we'll never commit another thing to this repo. But hopefully, we and a few others will make this into something cool. Not competitive with the official Bespin project at Mozilla Labs, but just... different.
 
-Thanks for downloading the code to the Bespin project. You can easily get 
-Bespin running on your local Mac or Linux machine (see note about Windows 
-below).
-
-To run Bespin locally, go to backend/python and take a look at the 
-README.txt file there.
-
-Contributing to Bespin
-----------------------
-
-For details see:
-  https://wiki.mozilla.org/Labs/Bespin/Contributing
-
-The source repository is in Mercurial at:
-  http://hg.mozilla.org/labs/bespin/
-
-
-Note about running on Windows
------------------------------
-
-The current, up-to-date Bespin backend is written in Python. Because Python is cross-platform, it should be possible (and likely not too difficult) to make the backend work on Windows once Python 2.5 is installed. However, this has not been tested and there are likely two issues:
-
-1. some libraries used by Bespin try to compile C code
-2. some paths may not be correct on Windows systems
-
+Ben and Dion
+May 2010
