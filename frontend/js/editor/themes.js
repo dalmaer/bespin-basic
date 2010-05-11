@@ -30,6 +30,8 @@ if (typeof Bespin == "undefined") Bespin = {};
 
 Bespin.Themes = {};
 
+console.log("themes!");
+
 // ** Coffee Theme **
 Bespin.Themes.coffee = {
     backgroundStyle: "#2A211C",

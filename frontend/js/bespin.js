@@ -19,32 +19,40 @@
  *
  * Contributor(s):
  *   Bespin Team (bespin@mozilla.com)
+ *   Ben and Dion (ben@galbraiths.org, dion@almaer.com)
  *
  * ***** END LICENSE BLOCK ***** */
 
-// = Bespin =
-//
-// This is the root of it all. The {{{Bespin}}} namespace.
-// All of the JavaScript for Bespin will be placed in this namespace later.
-//
-// {{{ Bespin.versionNumber }}} is the core version of the Bespin system
-// {{{ Bespin.apiVersion }}} is the version number of the API (to ensure that the
-//                          client and server are talking the same language)
-// {{{ Bespin.commandlineHeight }}} is the height of the command line
-
 var Bespin = {
-    // BEGIN VERSION BLOCK
-    versionNumber: 'tip',
-    versionCodename: '(none)',
-    apiVersion: 'dev',
-    // END VERSION BLOCK
-
-    commandlineHeight: 95,
-    userSettingsProject: "BespinSettings",
-   
-    displayVersion: function(el) {
-        if (!el) el = $("version");
-        if (!el) return;
-        el.innerHTML = '<a href="https://wiki.mozilla.org/Labs/Bespin/ReleaseNotes" title="Read the release notes">Version <span class="versionnumber">' + this.versionNumber + '</span> "' + this.versionCodename + '"</a>';
-    }
+    version: 'tip'
 };
+
+var _ = Bespin; // alias away!
+
+var _editor;
+
+// ** {{{ window.load time }}} **
+//
+// Loads and configures the objects that the editor needs
+Event.observe(document, "dom:loaded", function() {
+    // find some Bespin instances and instantiate them
+    var editorElements = $$(".bespin-editor");
+    if (editorElements.length == 0) return; // no bespins here, move along
+
+    console.log("foo!");
+
+    _editor = new Bespin.Editor.API($(editorElements[0]));
+
+    Element.observe(window, 'resize', doResize);
+});
+
+//function loadLib(url, callback) {
+//    var script = document.createElement("script");
+//    script.src = url;
+//    if (callback) script.onload = callback;
+//    document.body.appendChild(script);
+//}
+
+function doResize() {
+    _editor.paint();
+}

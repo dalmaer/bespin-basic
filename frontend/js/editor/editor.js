@@ -188,7 +188,6 @@ Bespin.Editor.Utils = {
     },
 
     changePos: function(args, pos) {
-        ar
         return { pos: Bespin.Editor.Utils.copyPos(oldPos || _editor.cursorPosition) };    
     },
     
@@ -264,9 +263,6 @@ Bespin.Editor.DefaultEditorKeyListener = Class.create({
     },
 
     onkeydown: function(e) {
-        var handled = _commandLine.handleCommandLineFocus(e);
-        if (handled) return false;
-
         var args = { event: e, pos: Bespin.Editor.Utils.copyPos(this.editor.cursorPosition) }
         this.skipKeypress = false;
         this.returnValue = false;
@@ -292,9 +288,6 @@ Bespin.Editor.DefaultEditorKeyListener = Class.create({
     },
 
     onkeypress: function(e) {
-        var handled = _commandLine.handleCommandLineFocus(e);
-        if (handled) return false;
-        
         // This is to get around the Firefox bug that happens the first time of jumping between command line and editor
         // Bug https://bugzilla.mozilla.org/show_bug.cgi?id=478686
         if (e.charCode == 'j'.charCodeAt() && e.ctrlKey) {
@@ -452,7 +445,8 @@ Bespin.Editor.UI = Class.create({
             x = Math.floor(tx / this.charWidth);
             
             // With striclines turned on, don't select past the end of the line
-            if (_settings.isOn(_settings.get('strictlines'))) {
+            //if (_settings.isOn(_settings.get('strictlines'))) {
+            if (true) { // default strictlines to on
                 var maxcol = this.editor.model.getRowLength(y);
             
                 if (x >= maxcol) {
