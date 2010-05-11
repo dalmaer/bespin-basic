@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Stand-alone Bespin Editor Experiment</title>
+        <script type="text/javascript" src="js/external/prototype-1.6.0.3.js"></script>
+
+        <script type="text/javascript" src="js/bespin.js"></script>
+
+        <script type="text/javascript" src="js/util/clipboard.js"></script>
+        <script type="text/javascript" src="js/util/fixcanvas.js"></script>
+        <script type="text/javascript" src="js/util/keys.js"></script>
+        <script type="text/javascript" src="js/util/mousewheelevent.js"></script>
+
+        <script type="text/javascript" src="js/editor/actions.js"></script>
+        <script type="text/javascript" src="js/editor/editor.js"></script>
+        <script type="text/javascript" src="js/editor/model.js"></script>
+        <script type="text/javascript" src="js/editor/toolbar.js"></script>
+        <script type="text/javascript" src="js/editor/themes.js"></script>
+        <script type="text/javascript" src="js/editor/undo.js"></script>
+
+        <script type="text/javascript" src="js/syntax/syntax.js"></script>
+        <script type="text/javascript" src="js/syntax/javascript.js"></script>
+        <script type="text/javascript" src="js/syntax/css.js"></script>
+        <script type="text/javascript" src="js/syntax/html.js"></script>
+
+        <style type="text/css">
+            .bespin-editor {
+                height: 300px;
+                width: 400px;
+                border: 1px solid yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            Originally, Bespin was meant to be an IDE-ish type of thing. The Bespin team
+            then started to pursue a "Bespin embedded" use case.
+        </p>
+        <p>
+            This version of Bespin focuses on the embedded use case as well. In fact,
+            just below this &lt;p&gt; is a stand-alone Bespin editor.
+        </p>
+        <div id="bespin1" class="bespin-editor" data-src="editor_contents.txt"></div>
+        <p>
+            And, look, here's another one!
+        </p>
+        <div id="bespin2" class="bespin-editor">
+            This is some default text
+            that you can just enter right in
+            the HTML.
+        </div>
+        <p>
+            These two are completely decoupled from each other and both perform really well.
+        </p>
+    </body>
+</html>
