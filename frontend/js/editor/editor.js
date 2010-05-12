@@ -700,12 +700,12 @@ Bespin.Editor.UI = Class.create({
 
     getWidth: function() {
         var element = this.editor.canvas.parentNode;
-        return parseInt(element.getAttribute("width"));
+        return parseInt(element.clientWidth);
     },
 
     getHeight: function() {
         var element = this.editor.canvas.parentNode;
-        return parseInt(element.getAttribute("height"));
+        return parseInt(element.clientHeight);
     },
 
     getTopOffset: function() {
@@ -772,10 +772,10 @@ Bespin.Editor.UI = Class.create({
 
         // cwidth and cheight are set to the dimensions of the parent node of the canvas element; we'll resize the canvas element
         // itself a little bit later in this function
-        //var cwidth = this.getWidth();
-        //var cheight = this.getHeight();
-        var cwidth = 400;
-        var cheight = 300;
+        var cwidth = this.getWidth();
+        var cheight = this.getHeight();
+//        var cwidth = 400;
+//        var cheight = 300;
 
         var virtualheight = this.lineHeight * ed.model.getRowCount();    // full height based on content
         var virtualwidth = this.charWidth * (Math.max(ed.model.getMaxCols(), ed.cursorPosition.col) + 2);       // full width based on content plus a little padding
