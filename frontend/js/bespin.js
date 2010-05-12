@@ -62,3 +62,10 @@ function doResize() {
     });
     //_editor.paint();
 }
+
+function focusedEditor() {
+    for (var x=0; x < _editors.length; x++) {
+        var editor = _editors[x];
+        if (editor.focus) return editor;
+    }
+}

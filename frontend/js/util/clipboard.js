@@ -82,14 +82,17 @@ Bespin.Clipboard.DOMEvents = Class.create({
         });
 
         Event.observe(document, "copy", function(e) {
-            var selectionText = _editor.getSelectionAsText();
+            var editor = focusedEditor();
+            if (editor) {
+                var selectionText = editor.getSelectionAsText();
             
-            if (selectionText && selectionText != '') {
-                e.preventDefault();
-                e.clipboardData.setData('text/plain', selectionText);
+                if (selectionText && selectionText != '') {
+                    e.preventDefault();
+                    e.clipboardData.setData('text/plain', selectionText);
+                }
+            
+                $('canvas').focus();
             }
-            
-            $('canvas').focus();
         });
 
         // Cut
@@ -99,19 +102,22 @@ Bespin.Clipboard.DOMEvents = Class.create({
         });
 
         Event.observe(document, "cut", function(e) {
-            var selectionObject = _editor.getSelection();
+            var editor = focusedEditor();
+            if (editor) {
+                var selectionObject = editor.getSelection();
 
-            if (selectionObject) {
-                var selectionText = _editor.model.getChunk(selectionObject);
+                if (selectionObject) {
+                    var selectionText = editor.model.getChunk(selectionObject);
 
-                if (selectionText && selectionText != '') {
-                    e.preventDefault();
-                    e.clipboardData.setData('text/plain', selectionText);
-                    _editor.ui.actions.deleteSelection(selectionObject);
+                    if (selectionText && selectionText != '') {
+                        e.preventDefault();
+                        e.clipboardData.setData('text/plain', selectionText);
+                        editor.ui.actions.deleteSelection(selectionObject);
+                    }
                 }
-            }
 
-            $('canvas').focus();
+                $('canvas').focus();
+            }
         });
 
         // Paste
@@ -121,14 +127,17 @@ Bespin.Clipboard.DOMEvents = Class.create({
         });
 
         Event.observe(document, "paste", function(e) {
-            e.preventDefault();
+            var editor = focusedEditor();
+            if (editor) {            
+                e.preventDefault();
 
-            var args = Bespin.Editor.Utils.buildArgs();    
-            args.chunk = e.clipboardData.getData('text/plain');
-            if (args.chunk) _editor.ui.actions.insertChunk(args);
+                var args = Bespin.Editor.Utils.buildArgs();    
+                args.chunk = e.clipboardData.getData('text/plain');
+                if (args.chunk) editor.ui.actions.insertChunk(args);
 
-            $('canvas').focus();
-            $('copynpaster').value = '';
+                $('canvas').focus();
+                $('copynpaster').value = '';
+            }
         });
 
         Event.observe(document, "dom:loaded", function() {

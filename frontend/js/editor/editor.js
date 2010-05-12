@@ -184,11 +184,11 @@ Bespin.Editor.SelectionHelper = Class.create({
 // Mess with positions mainly
 Bespin.Editor.Utils = {
     buildArgs: function(oldPos) {
-        return { pos: Bespin.Editor.Utils.copyPos(oldPos || _editor.cursorPosition) };    
+        return { pos: Bespin.Editor.Utils.copyPos(oldPos || focusedEditor().cursorPosition) };    
     },
 
     changePos: function(args, pos) {
-        return { pos: Bespin.Editor.Utils.copyPos(oldPos || _editor.cursorPosition) };    
+        return { pos: Bespin.Editor.Utils.copyPos(oldPos || focusedEditor().cursorPosition) };    
     },
     
     copyPos: function(oldPos) {
