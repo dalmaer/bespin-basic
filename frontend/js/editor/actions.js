@@ -83,7 +83,9 @@ Bespin.Editor.Actions = Class.create({
     moveCursorUp: function(args) {
         this.editor.cursorPosition.row = Math.max(0, args.pos.row - 1);
 
-        if (_settings.isOn(_settings.get('strictlines')) && args.pos.col > this.editor.model.getRowLength(this.editor.cursorPosition.row)) {
+        // fixme: settings
+        //if (_settings.isOn(_settings.get('strictlines')) && args.pos.col > this.editor.model.getRowLength(this.editor.cursorPosition.row)) {
+        if (args.pos.col > this.editor.model.getRowLength(this.editor.cursorPosition.row)) {
             this.handleCursorSelection(args);
             
             args.pos.row -= 1; // one above
@@ -101,7 +103,9 @@ Bespin.Editor.Actions = Class.create({
     moveCursorDown: function(args) {
         this.editor.cursorPosition.row = Math.min(this.editor.model.getRowCount() - 1, args.pos.row + 1);
 
-        if (_settings.isOn(_settings.get('strictlines')) && args.pos.col > this.editor.model.getRowLength(this.editor.cursorPosition.row)) {
+        // fixme: settings
+        //if (_settings.isOn(_settings.get('strictlines')) && args.pos.col > this.editor.model.getRowLength(this.editor.cursorPosition.row)) {
+        if (args.pos.col > this.editor.model.getRowLength(this.editor.cursorPosition.row)) {
             this.handleCursorSelection(args);
             
             args.pos.row += 1; // one below
