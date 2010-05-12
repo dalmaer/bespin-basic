@@ -30,6 +30,7 @@ var Bespin = {
 var _ = Bespin; // alias away!
 
 var _editor;
+var _editors = [];
 
 // ** {{{ window.load time }}} **
 //
@@ -39,9 +40,11 @@ Event.observe(document, "dom:loaded", function() {
     var editorElements = $$(".bespin-editor");
     if (editorElements.length == 0) return; // no bespins here, move along
 
-    console.log("foo!");
+    editorElements.forEach(function(element) {
+        _editors.push(new Bespin.Editor.API(element));
+    });
 
-    _editor = new Bespin.Editor.API($(editorElements[0]));
+    //_editor = new Bespin.Editor.API($(editorElements[0]));
 
     Element.observe(window, 'resize', doResize);
 });
@@ -54,5 +57,8 @@ Event.observe(document, "dom:loaded", function() {
 //}
 
 function doResize() {
-    _editor.paint();
+    _editors.forEach(function(editor) {
+        editor.paint();
+    });
+    //_editor.paint();
 }

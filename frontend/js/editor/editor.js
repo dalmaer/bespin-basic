@@ -639,14 +639,14 @@ Bespin.Editor.UI = Class.create({
     installKeyListener: function(listener) {
         var Key = Bespin.Key; // alias
 
-        if (this.oldkeydown) Event.stopObserving(document, "keydown", this.oldkeydown);
-        if (this.oldkeypress) Event.stopObserving(document, "keypress", this.oldkeypress);
+        if (this.oldkeydown) Event.stopObserving(this.editor.container, "keydown", this.oldkeydown);
+        if (this.oldkeypress) Event.stopObserving(this.editor.container, "keypress", this.oldkeypress);
 
         this.oldkeydown = listener.onkeydown.bindAsEventListener(listener);
         this.oldkeypress = listener.onkeypress.bindAsEventListener(listener);
 
-        Event.observe(document, "keydown", this.oldkeydown);
-        Event.observe(document, "keypress", this.oldkeypress);
+        Event.observe(this.editor.container, "keydown", this.oldkeydown);
+        Event.observe(this.editor.container, "keypress", this.oldkeypress);
 
         // Modifiers, Key, Action
         
