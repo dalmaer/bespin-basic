@@ -774,8 +774,6 @@ Bespin.Editor.UI = Class.create({
         // itself a little bit later in this function
         var cwidth = this.getWidth();
         var cheight = this.getHeight();
-//        var cwidth = 400;
-//        var cheight = 300;
 
         var virtualheight = this.lineHeight * ed.model.getRowCount();    // full height based on content
         var virtualwidth = this.charWidth * (Math.max(ed.model.getMaxCols(), ed.cursorPosition.col) + 2);       // full width based on content plus a little padding
@@ -947,34 +945,34 @@ Bespin.Editor.UI = Class.create({
             // the following two chunks of code do the same thing; only one should be uncommented at a time
 
             // CHUNK 1: this code just renders the line with white text and is for testing
-            ctx.fillStyle = "white";
-            ctx.fillText(this.editor.model.getRowArray(currentLine).join(""), x, cy);
+//            ctx.fillStyle = "white";
+//            ctx.fillText(this.editor.model.getRowArray(currentLine).join(""), x, cy);
 
             // CHUNK 2: this code uses new the SyntaxModel API to attempt to render a line with fewer passes than the color helper API
-//            var lineInfo = this.syntaxModel.getSyntaxStyles(currentLine, this.editor.language);
-//
-//            for (ri = 0; ri < lineInfo.regions.length; ri++) {
-//                var styleInfo = lineInfo.regions[ri];
-//
-//                for (var style in styleInfo) {
-//                    if (!styleInfo.hasOwnProperty(style)) continue;
-//
-//                    var thisLine = "";
-//
-//                    var styleArray = styleInfo[style];
-//                    var currentColumn = 0; // current column, inclusive
-//                    for (var si = 0; si < styleArray.length; si++) {
-//                        var range = styleArray[si];
-//                        for ( ; currentColumn < range.start; currentColumn++) thisLine += " ";
-//                        thisLine += lineInfo.text.substring(range.start, range.stop);
-//                        currentColumn = range.stop;
-//                    }
-//
-//                    ctx.fillStyle = this.editor.theme[style] || "white";
-//                    ctx.font = this.editor.theme.lineNumberFont;
-//                    ctx.fillText(thisLine, x, cy);
-//                }
-//            }
+            var lineInfo = this.syntaxModel.getSyntaxStyles(currentLine, this.editor.language);
+
+            for (ri = 0; ri < lineInfo.regions.length; ri++) {
+                var styleInfo = lineInfo.regions[ri];
+
+                for (var style in styleInfo) {
+                    if (!styleInfo.hasOwnProperty(style)) continue;
+
+                    var thisLine = "";
+
+                    var styleArray = styleInfo[style];
+                    var currentColumn = 0; // current column, inclusive
+                    for (var si = 0; si < styleArray.length; si++) {
+                        var range = styleArray[si];
+                        for ( ; currentColumn < range.start; currentColumn++) thisLine += " ";
+                        thisLine += lineInfo.text.substring(range.start, range.stop);
+                        currentColumn = range.stop;
+                    }
+
+                    ctx.fillStyle = this.editor.theme[style] || "white";
+                    ctx.font = this.editor.theme.lineNumberFont;
+                    ctx.fillText(thisLine, x, cy);
+                }
+            }
 
             if (!refreshCanvas) {
                 ctx.drawImage(this.verticalScrollCanvas, verticalx + Math.abs(this.xoffset), Math.abs(this.yoffset));
